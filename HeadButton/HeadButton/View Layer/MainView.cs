@@ -14,8 +14,10 @@ namespace HeadButton.View_Layer
     public partial class MainView : Form
     {
         public MainView()
-        {
+        { 
             InitializeComponent();
+            Model.sql();
+            
         }
         private void lstCategories_SelectedIndexChanged(object sender, EventArgs e)
         {
