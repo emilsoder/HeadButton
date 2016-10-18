@@ -7,17 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using HeadButton.Model_Layer;
 
-namespace HeadButton.View_Layer
+namespace Dev
 {
-    public partial class MainView : Form
+    public partial class Form1 : Form
     {
-        public MainView()
-        { 
+        public Form1()
+        {
             InitializeComponent();
-            Model.sql();
-            
         }
     }
 }

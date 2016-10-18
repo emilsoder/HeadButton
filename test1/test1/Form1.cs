@@ -1,17 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
-namespace HeadButton.Model_Layer
+namespace test1
 {
-    //Här lägger vi logik, databaslogik och liknande
-    public class Model
+    public partial class Form1 : Form
     {
-        public static void FillData()
+        public Form1()
+        {
+            InitializeComponent();
+            FillData();
+        }
+
+        void FillData()
         {
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
@@ -21,13 +29,12 @@ namespace HeadButton.Model_Layer
             conn.Open();
             SqlDataReader rd = cmd.ExecuteReader();
 
-            while (rd.Read())
+            while(rd.Read())
             {
                 listCategories.Items.Add(rd.GetValue(0).ToString());
             }
-
+            
 
         }
-
     }
 }

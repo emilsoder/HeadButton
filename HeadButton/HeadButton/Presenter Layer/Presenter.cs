@@ -10,5 +10,7 @@ namespace HeadButton.Presenter_Layer
     //Den ska föra över och hämta data til och från View Layer till Model Layer.
     public class Presenter
     {
+
+
     }
 }
