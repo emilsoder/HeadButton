@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HeadButton
+namespace HeadButton.View_Layer
 {
-    public partial class Form1 : Form
+    public partial class MainView : Form
     {
-        public Form1()
+        public MainView()
         {
             InitializeComponent();
         }

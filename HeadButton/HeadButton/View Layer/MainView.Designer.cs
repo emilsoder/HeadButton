@@ -1,6 +1,6 @@
-﻿namespace HeadButton
+﻿namespace HeadButton.View_Layer
 {
-    partial class Form1
+    partial class MainView
     {
         /// <summary>
         /// Required designer variable.
