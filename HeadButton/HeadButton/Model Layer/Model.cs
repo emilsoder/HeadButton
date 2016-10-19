@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using HeadButton.Presenter_Layer;
-
+using System.Configuration;
 
 namespace HeadButton.Model_Layer
 {
@@ -16,10 +16,9 @@ namespace HeadButton.Model_Layer
 
     public class Model
     {
-        #region Connection String
-        public static string connString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=NORTHWND;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-        #endregion
+        public static string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
 
+            
         public static void GetCategories()
         {
             SqlConnection conn = new SqlConnection(connString);
