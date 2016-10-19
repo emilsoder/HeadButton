@@ -18,26 +18,32 @@ namespace HeadButton.Presenter_Layer
         public static int categoryIndex { get; set; }
         public static int productIndex { get; set; }
 
-        // Nya och eller Ändrade värden
+        // Hämtade värden
+        public static string productName { get; set; }
+        public static string unitPrice { get; set; }
+
+        // Nya värden
         public static string newProductName { get; set; }
-        public static int newUnitPrice { get; set; }
+        public static string newUnitPrice { get; set; }
 
         //Listor ska fyllas i Model. 
         //Dessa ska användas som ListBoxarnas datakällor i MainView.
         public static List<string> listCategories = new List<string>();
         public static List<string> listProducts = new List<string>();
 
-        public static void CategoryRequest(int _categoryIndex)
+        public static void OnStartUp()
         {
-            categoryIndex = _categoryIndex;
-            //TODO: anropa model
+            Model.GetCategories();
         }
 
-        public static void ProductRequest(int _productIndex)
+        public static void GetProducts()
         {
-            productIndex = _productIndex;
-            //TODO: anropa model
+            Model.GetProductsByIndex();
+        }
 
+        public static void ProductItemRequest()
+        {
+            Model.SetTextBoxes();
         }
     }
 }
