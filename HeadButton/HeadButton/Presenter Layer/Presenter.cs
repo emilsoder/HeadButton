@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HeadButton.Presenter_Layer
 {
-    #region klassbeskrivning
+    #region Klassbeskrivning
     //Här lägger vi "Lim"-koden. Presentern ska fungera som en mellanhand från View Layer till Model Layer. 
     //Den ska föra över och hämta data til och från View Layer till Model Layer.
     #endregion
