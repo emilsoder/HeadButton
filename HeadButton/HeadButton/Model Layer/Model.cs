@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using HeadButton.Presenter_Layer;
 
 namespace HeadButton.Model_Layer
 {
@@ -23,11 +24,8 @@ namespace HeadButton.Model_Layer
 
             while (rd.Read())
             {
-                listCategories.Items.Add(rd.GetValue(0).ToString());
+                Presenter.listCategories.Add(rd.GetValue(0).ToString());
             }
-
-
         }
-
     }
 }

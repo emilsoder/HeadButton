@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HeadButton.Model_Layer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,11 +27,12 @@ namespace HeadButton.Presenter_Layer
         public static List<string> listCategories = new List<string>();
         public static List<string> listProducts = new List<string>();
 
+
         public static void CategoryRequest(int _categoryIndex)
         {
             categoryIndex = _categoryIndex;
             //TODO: anropa model
-
+            Model.FillData();
         }
 
         public static void ProductRequest(int _productIndex)
