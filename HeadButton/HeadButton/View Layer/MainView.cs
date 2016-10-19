@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HeadButton.Presenter_Layer;
+using HeadButton.Model_Layer;
+using System.Diagnostics;
 
 namespace HeadButton.View_Layer
 {
@@ -16,30 +18,51 @@ namespace HeadButton.View_Layer
         public MainView()
         { 
             InitializeComponent();
+            OnFormLoad();
         }
+
         private void lstCategories_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Presenter.CategoryRequest(lstCategories.SelectedIndex);
-            lstCategories.DataSource = Presenter.listCategories;
+            lstProducts.Items.Clear();
+            Presenter.listProducts.Clear();
+            Presenter.categoryIndex = lstCategories.SelectedIndex;
+            //Model.GetProductsByIndex();
+            Presenter.GetProducts();
+
+            try
+            {
+                foreach (var item in Presenter.listProducts)
+                {
+                    lstProducts.Items.Add(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }            
         }
 
         private void lstProducts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Presenter.ProductRequest(lstProducts.SelectedIndex);
-            lstProducts.DataSource = Presenter.listProducts;
+            txtUnitPrice.Clear();
+            txtProductName.Clear();
 
-            txtNewProductName.Text = Presenter.newProductName;
-            txtUnitPrice.Text = Presenter.newUnitPrice.ToString();
+            Presenter.productIndex = lstProducts.SelectedIndex;
+            //Model.SetTextBoxes();
+            Presenter.ProductItemRequest();
+            txtProductName.Text = Presenter.productName;
+            txtUnitPrice.Text = Presenter.unitPrice.ToString();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
-                if (txtUnitPrice.Text != "" && txtNewProductName.Text != "")
+                if (txtUnitPrice.Text != "" && txtProductName.Text != "")
                 {
-                    Presenter.newUnitPrice = int.Parse(txtUnitPrice.Text);
-                    Presenter.newProductName = txtNewProductName.Text;
+                    Presenter.newUnitPrice = txtUnitPrice.Text;
+                    Presenter.newProductName = txtProductName.Text;
+
                     ClearTextBoxes();
                 }
                 else
@@ -56,7 +79,13 @@ namespace HeadButton.View_Layer
         public void ClearTextBoxes()
         {
             txtUnitPrice.Text = "";
-            txtNewProductName.Text = "";
+            txtProductName.Text = "";
+        }
+
+        private void OnFormLoad()
+        {
+            Presenter.OnStartUp();
+            lstCategories.DataSource = Presenter.listCategories;
         }
     }
 }
