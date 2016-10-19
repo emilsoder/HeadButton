@@ -17,19 +17,19 @@ namespace HeadButton.Model_Layer
     public class Model
     {
         #region Connection String
-        public static string connString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        public static string connString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=NORTHWND;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         #endregion
 
         public static void GetCategories()
         {
             SqlConnection conn = new SqlConnection(connString);
 
-            string sqlQuery = "SELECT [CategoryName] FROM [NORTHWND].[dbo].[Categories]";
+            string sqlQuery = "SELECT [CategoryName] FROM [dbo].[Categories]";
 
             SqlCommand cmd = new SqlCommand(sqlQuery, conn);
             conn.Open();
 
-            SqlDataReader rd = cmd.ExecuteReader();            
+            SqlDataReader rd = cmd.ExecuteReader();
 
             while (rd.Read())
             {
@@ -48,17 +48,14 @@ namespace HeadButton.Model_Layer
             conn.Open();
 
             SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT top(1000)"
-                + "[ProductName], [ProductID]"
-                + "FROM [NORTHWND].[dbo].[Products]"
-                + "where CategoryID="
-                + selectedItem.ToString();
+            cmd.CommandText = "SELECT [ProductName], [ProductID] FROM [dbo].[Products] WHERE CategoryID = @CategoryID";
+            cmd.Parameters.AddWithValue("@CategoryID", selectedItem.ToString());
 
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
             {
-                Presenter.listProducts.Add(reader.GetValue(1).ToString() + ". " +  reader.GetValue(0).ToString());
+                Presenter.listProducts.Add(reader.GetValue(1).ToString() + ". " + reader.GetValue(0).ToString());
             }
 
             reader.Close();
@@ -79,10 +76,8 @@ namespace HeadButton.Model_Layer
             conn.Open();
 
             SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT [UnitPrice]" 
-                + "FROM [NORTHWND].[dbo].[Products]" 
-                + "where ProductID=" 
-                + selectedItem.ToString();
+            cmd.CommandText = "SELECT [UnitPrice] FROM [dbo].[Products] WHERE ProductID = @ProductID";
+            cmd.Parameters.AddWithValue("@ProductID", selectedItem.ToString());
 
             SqlDataReader reader = cmd.ExecuteReader();
             reader.Read();
@@ -101,17 +96,14 @@ namespace HeadButton.Model_Layer
             conn.Open();
 
             SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT [ProductName]"
-                + "FROM [NORTHWND].[dbo].[Products]" 
-                + "where ProductID=" 
-                + selectedItem.ToString();
+            cmd.CommandText = "SELECT [ProductName] FROM [dbo].[Products] WHERE ProductID = @ProductID";
+
+            cmd.Parameters.AddWithValue("@ProductID", selectedItem.ToString());
 
             SqlDataReader reader = cmd.ExecuteReader();
             reader.Read();
-            //while (reader.Read())
-            //{
-                Presenter.productName = (reader.GetValue(0).ToString());
-            //}
+
+            Presenter.productName = (reader.GetValue(0).ToString());
 
             reader.Close();
             conn.Close();
@@ -119,17 +111,18 @@ namespace HeadButton.Model_Layer
 
         public static void Update()
         {
-            SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            SqlConnection conn = new SqlConnection(connString);
+            string sqlQuery = "UPDATE [dbo].[Products] SET [ProductName]=@ProductName, [UnitPrice]=@UnitPrice WHERE [ProductID]=@ProductID";
 
-            string sqlQuery = "UPDATE [NORTHWND].[dbo].[Products] SET [ProductName]=@ProductName, [UnitPrice]=@UnitPrice WHERE [ProductID]=@ProductID";
             SqlCommand cmd = new SqlCommand(sqlQuery, conn);
+
             cmd.Parameters.AddWithValue("@ProductName", Presenter.newProductName);
             cmd.Parameters.AddWithValue("@UnitPrice", Presenter.newUnitPrice);
             cmd.Parameters.AddWithValue("@ProductID", Presenter.productIndex);
 
             conn.Open();
             cmd.ExecuteNonQuery();
+
             conn.Close();
         }
     }

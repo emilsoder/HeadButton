@@ -17,17 +17,22 @@ namespace HeadButton.View_Layer
     public partial class MainView : Form
     {
         public MainView()
-        { 
+        {
             InitializeComponent();
             OnFormLoad();
         }
 
         private void lstCategories_SelectedIndexChanged(object sender, EventArgs e)
         {
+            GetProductsList();
+        }
+
+
+        private void GetProductsList()
+        {
             lstProducts.Items.Clear();
             Presenter.listProducts.Clear();
             Presenter.categoryIndex = lstCategories.SelectedIndex;
-            //Model.GetProductsByIndex();
             Presenter.GetProducts();
 
             try
@@ -40,20 +45,16 @@ namespace HeadButton.View_Layer
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-            }            
+            }
         }
-
         private void lstProducts_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtUnitPrice.Clear();
             txtProductName.Clear();
 
-            //string string1 = lstProducts.SelectedItem.ToString();
-
             var regexString = Regex.Replace(lstProducts.SelectedItem.ToString(), "[^0-9]", "");
 
             Presenter.productIndex = Convert.ToInt32(regexString);
-
             Presenter.ProductItemRequest();
 
             txtProductName.Text = Presenter.productName;
@@ -62,14 +63,19 @@ namespace HeadButton.View_Layer
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            int selected = lstProducts.SelectedIndex;
+
             try
             {
-                if (txtUnitPrice.Text != "" && txtProductName.Text != "")
+                if ((txtNewUnitPrice.Text != "") && (txtNewProductName.Text != ""))
                 {
-                    Presenter.newUnitPrice = txtUnitPrice.Text;
-                    Presenter.newProductName = txtProductName.Text;
+                    Presenter.newUnitPrice = txtNewUnitPrice.Text;
+                    Presenter.newProductName = txtNewProductName.Text;
 
+                    Model.Update();
                     ClearTextBoxes();
+                    GetProductsList();
+                    lstProducts.SelectedIndex = selected;
                 }
                 else
                 {
@@ -84,8 +90,10 @@ namespace HeadButton.View_Layer
 
         public void ClearTextBoxes()
         {
-            txtUnitPrice.Text = "";
-            txtProductName.Text = "";
+            txtUnitPrice.Text = null;
+            txtProductName.Text = null;
+            txtNewProductName.Text = null;
+            txtNewUnitPrice.Text = null;
         }
 
         private void OnFormLoad()
