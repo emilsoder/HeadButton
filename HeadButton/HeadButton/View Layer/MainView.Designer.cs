@@ -81,9 +81,9 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(185, 156);
+            this.btnSave.Location = new System.Drawing.Point(184, 152);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(76, 27);
             this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -91,7 +91,6 @@
             // 
             // txtNewUnitPrice
             // 
-            this.txtNewUnitPrice.Enabled = false;
             this.txtNewUnitPrice.Location = new System.Drawing.Point(67, 114);
             this.txtNewUnitPrice.Name = "txtNewUnitPrice";
             this.txtNewUnitPrice.Size = new System.Drawing.Size(193, 20);
@@ -117,7 +116,6 @@
             // 
             // txtNewProductName
             // 
-            this.txtNewProductName.Enabled = false;
             this.txtNewProductName.Location = new System.Drawing.Point(67, 46);
             this.txtNewProductName.Name = "txtNewProductName";
             this.txtNewProductName.Size = new System.Drawing.Size(193, 20);

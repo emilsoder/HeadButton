@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using HeadButton.Presenter_Layer;
 using HeadButton.Model_Layer;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace HeadButton.View_Layer
 {
@@ -47,9 +48,14 @@ namespace HeadButton.View_Layer
             txtUnitPrice.Clear();
             txtProductName.Clear();
 
-            Presenter.productIndex = lstProducts.SelectedIndex;
-            //Model.SetTextBoxes();
+            //string string1 = lstProducts.SelectedItem.ToString();
+
+            var regexString = Regex.Replace(lstProducts.SelectedItem.ToString(), "[^0-9]", "");
+
+            Presenter.productIndex = Convert.ToInt32(regexString);
+
             Presenter.ProductItemRequest();
+
             txtProductName.Text = Presenter.productName;
             txtUnitPrice.Text = Presenter.unitPrice.ToString();
         }

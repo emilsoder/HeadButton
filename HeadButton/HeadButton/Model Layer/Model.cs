@@ -21,7 +21,6 @@ namespace HeadButton.Model_Layer
             SqlConnection conn = new SqlConnection(connString);
 
             string sqlQuery = "SELECT [CategoryName] FROM [NORTHWND].[dbo].[Categories]";
-            //string sqlQuery = "SELECT [CategoryName] FROM [dbo].[Categories]";
 
             SqlCommand cmd = new SqlCommand(sqlQuery, conn);
             conn.Open();
@@ -39,14 +38,14 @@ namespace HeadButton.Model_Layer
 
         public static void GetProductsByIndex()
         {
-            var selectedItem = (Presenter.categoryIndex) + 1;
+            var selectedItem = Presenter.categoryIndex + 1;
 
             SqlConnection conn = new SqlConnection(connString);
             conn.Open();
 
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandText = "SELECT top(1000)"
-                + "[ProductName]"
+                + "[ProductName], [ProductID]"
                 + "FROM [NORTHWND].[dbo].[Products]"
                 + "where CategoryID="
                 + selectedItem.ToString();
@@ -55,7 +54,7 @@ namespace HeadButton.Model_Layer
 
             while (reader.Read())
             {
-                Presenter.listProducts.Add(reader.GetValue(0).ToString());
+                Presenter.listProducts.Add(reader.GetValue(1).ToString() + ". " +  reader.GetValue(0).ToString());
             }
 
             reader.Close();
@@ -70,7 +69,7 @@ namespace HeadButton.Model_Layer
 
         private static void SetUnitPrice()
         {
-            int selectedItem = Presenter.productIndex + 1;
+            int selectedItem = Presenter.productIndex;
 
             SqlConnection conn = new SqlConnection(connString);
             conn.Open();
@@ -84,10 +83,7 @@ namespace HeadButton.Model_Layer
             SqlDataReader reader = cmd.ExecuteReader();
             reader.Read();
 
-            //while (reader.Read())
-            //{
             Presenter.unitPrice = (reader.GetValue(0).ToString());
-            //}
 
             reader.Close();
             conn.Close();
@@ -95,7 +91,7 @@ namespace HeadButton.Model_Layer
 
         private static void SetProductName()
         {
-            int selectedItem = Presenter.productIndex + 1;
+            int selectedItem = Presenter.productIndex;
 
             SqlConnection conn = new SqlConnection(connString);
             conn.Open();
