@@ -16,6 +16,8 @@ namespace HeadButton.View_Layer
         public MainView()
         { 
             InitializeComponent();
+            Model_Layer.Model.FillData();
+            lstCategories.DataSource = Presenter.listCategories;
         }
         private void lstCategories_SelectedIndexChanged(object sender, EventArgs e)
         {
