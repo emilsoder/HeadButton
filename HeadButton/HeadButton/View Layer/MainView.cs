@@ -27,7 +27,6 @@ namespace HeadButton.View_Layer
             GetProductsList();
         }
 
-
         private void GetProductsList()
         {
             lstProducts.Items.Clear();
