@@ -17,7 +17,6 @@ namespace HeadButton.Model_Layer
     public class Model
     {
         public static string connString = ConfigurationManager.ConnectionStrings["connString"].ConnectionString;
-
             
         public static void GetCategories()
         {
