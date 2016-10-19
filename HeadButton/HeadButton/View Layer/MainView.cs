@@ -14,14 +14,8 @@ namespace HeadButton.View_Layer
     public partial class MainView : Form
     {
         public MainView()
-        {
+        { 
             InitializeComponent();
-            OnLoad();
-        }
-
-        public void OnLoad()
-        {
-            lstCategories.DataSource = Presenter.listCategories;
         }
         private void lstCategories_SelectedIndexChanged(object sender, EventArgs e)
         {
