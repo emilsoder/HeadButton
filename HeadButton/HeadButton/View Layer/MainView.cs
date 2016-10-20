@@ -11,11 +11,13 @@ using HeadButton.Presenter_Layer;
 using HeadButton.Model_Layer;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
+using AddProductProject;
 
 namespace HeadButton.View_Layer
 {
     public partial class MainView : Form
     {
+
         public MainView()
         {
             InitializeComponent();
@@ -62,7 +64,7 @@ namespace HeadButton.View_Layer
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            int selected = lstProducts.SelectedIndex;
+           int selectedItem = lstProducts.SelectedIndex;
 
             try
             {
@@ -74,7 +76,8 @@ namespace HeadButton.View_Layer
                     Model.Update();
                     ClearTextBoxes();
                     GetProductsList();
-                    lstProducts.SelectedIndex = selected;
+                    lstProducts.SelectedIndex = selectedItem;
+
                 }
                 else
                 {
@@ -99,6 +102,12 @@ namespace HeadButton.View_Layer
         {
             Presenter.OnStartUp();
             lstCategories.DataSource = Presenter.listCategories;
+        }
+
+        private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+            AddProductProject.View_Layer.AddProductView addProductView = new AddProductProject.View_Layer.AddProductView();
+            addProductView.ShowDialog();
         }
     }
 }

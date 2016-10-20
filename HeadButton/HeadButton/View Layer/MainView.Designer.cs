@@ -40,6 +40,7 @@
             this.lblNewName = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.panelTxtBoxes = new System.Windows.Forms.Panel();
+            this.btnAddProduct = new System.Windows.Forms.Button();
             this.panelTxtBoxes.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -141,6 +142,7 @@
             // 
             // panelTxtBoxes
             // 
+            this.panelTxtBoxes.Controls.Add(this.btnAddProduct);
             this.panelTxtBoxes.Controls.Add(this.lblName);
             this.panelTxtBoxes.Controls.Add(this.btnSave);
             this.panelTxtBoxes.Controls.Add(this.lblNewName);
@@ -155,6 +157,16 @@
             this.panelTxtBoxes.Name = "panelTxtBoxes";
             this.panelTxtBoxes.Size = new System.Drawing.Size(269, 363);
             this.panelTxtBoxes.TabIndex = 10;
+            // 
+            // btnAddProduct
+            // 
+            this.btnAddProduct.Location = new System.Drawing.Point(113, 312);
+            this.btnAddProduct.Name = "btnAddProduct";
+            this.btnAddProduct.Size = new System.Drawing.Size(75, 23);
+            this.btnAddProduct.TabIndex = 11;
+            this.btnAddProduct.Text = "Add product";
+            this.btnAddProduct.UseVisualStyleBackColor = true;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
             // MainView
             // 
@@ -186,6 +198,7 @@
         private System.Windows.Forms.Label lblNewName;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Panel panelTxtBoxes;
+        private System.Windows.Forms.Button btnAddProduct;
     }
 }
 

@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeadButton", "HeadButton\HeadButton.csproj", "{4AFA9FE7-B5EF-458B-A839-B491671ED125}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddProductProject", "AddProductProject\AddProductProject.csproj", "{960A9BDA-87E4-4C76-8CA2-0D9E822EE0C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4AFA9FE7-B5EF-458B-A839-B491671ED125}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4AFA9FE7-B5EF-458B-A839-B491671ED125}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4AFA9FE7-B5EF-458B-A839-B491671ED125}.Release|Any CPU.Build.0 = Release|Any CPU
+		{960A9BDA-87E4-4C76-8CA2-0D9E822EE0C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{960A9BDA-87E4-4C76-8CA2-0D9E822EE0C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{960A9BDA-87E4-4C76-8CA2-0D9E822EE0C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{960A9BDA-87E4-4C76-8CA2-0D9E822EE0C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
