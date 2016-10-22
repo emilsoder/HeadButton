@@ -14,7 +14,7 @@ namespace AddProductProject.Model_Layer
         #region PROPERTIES
         public string productName { get; set; }
         public string unitsInStock { get; set; }
-        public string unitsInOrder { get; set; }
+        public string unitsOnOrder { get; set; }
         public string quantityPerUnit { get; set; }
         public string unitPrice { get; set; }
         public string reorderLevel { get; set; }
@@ -32,22 +32,43 @@ namespace AddProductProject.Model_Layer
             try
             {
                 // Skapa T-SQL kommando för att lägga till ny produkt
-                cmd.CommandText = "INSERT INTO dbo.Products ()";
+                cmd.CommandText = "INSERT INTO dbo.Products ("
+                    + " ProductName,"
+                    + " SupplierID,"
+                    + " CategoryID,"
+                    + " QuantityPerUnit,"
+                    + " UnitPrice,"
+                    + " UnitsInStock,"
+                    + " UnitsOnOrder,"
+                    + " ReorderLevel,"
+                    + " Discontinued)"
+                    //Parametrar
+                    + " VALUES (" 
+                    + " @ProductName," 
+                    + " @SupplierID," 
+                    + " @CategoryID," 
+                    + " @QuantityPerUnit," 
+                    + " @UnitPrice,"
+                    + " @UnitsInStock," 
+                    + " @UnitsOnOrder," 
+                    + " @ReorderLevel," 
+                    + " @Discontinued" 
+                    + ")";
 
                 // Ändra "@parameter" till respektive parameter 
                 cmd.Parameters.AddWithValue("@ProductName", productName);
+                cmd.Parameters.AddWithValue("@SupplierID", SupplierID());
                 cmd.Parameters.AddWithValue("@CategoryID", CategoryID());
-                cmd.Parameters.AddWithValue("@parameter", SupplierID());
-                cmd.Parameters.AddWithValue("@parameter", unitPrice);
-                cmd.Parameters.AddWithValue("@parameter", unitsInStock);
-                cmd.Parameters.AddWithValue("@parameter", quantityPerUnit);
-                cmd.Parameters.AddWithValue("@parameter", unitsInOrder);
-                cmd.Parameters.AddWithValue("@parameter", reorderLevel);
-                cmd.Parameters.AddWithValue("@parameter", unitPrice);
-                cmd.Parameters.AddWithValue("@parameter", discontinuedInt);
+
+                cmd.Parameters.AddWithValue("@QuantityPerUnit", quantityPerUnit);
+                cmd.Parameters.AddWithValue("@UnitPrice", unitPrice);
+                cmd.Parameters.AddWithValue("@UnitsInStock", unitsInStock);
+
+                cmd.Parameters.AddWithValue("@UnitsOnOrder", unitsOnOrder);
+                cmd.Parameters.AddWithValue("@ReorderLevel", reorderLevel);
+                cmd.Parameters.AddWithValue("@Discontinued", discontinuedInt);
 
                 cmd.ExecuteNonQuery();
-                cmd.StatementCompleted += Cmd_StatementCompleted;
             }
             catch (SqlException ex)
             {
@@ -55,11 +76,8 @@ namespace AddProductProject.Model_Layer
                 MessageBox.Show(ex.Message);
             }
             conn.Close();
-        }
-        private void Cmd_StatementCompleted(object sender, System.Data.StatementCompletedEventArgs e)
-        {
-            if (e.RecordCount != 0)
-                MessageBox.Show("Product added!", "Successful!");        
+            MessageBox.Show("Product added!", "Successful!");
+
         }
 
         public static void GetSuppliers()

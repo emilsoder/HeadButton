@@ -86,7 +86,7 @@ namespace AddProductProject.Presenter_Layer
 
             m.productName = _productName;
             m.unitsInStock = _unitsInStock;
-            m.unitsInOrder = _unitsInOrder;
+            m.unitsOnOrder = _unitsInOrder;
             m.quantityPerUnit = _quantityPerUnit;
             m.unitPrice = _unitPrice;
             m.reorderLevel = _reorderLevel;

@@ -56,6 +56,7 @@ namespace HeadButton.View_Layer
             AddProductProject.View_Layer.AddProductView addProductView = new AddProductProject.View_Layer.AddProductView();
             addProductView.ddlCategoryDataSource(Presenter.listCategories);
             addProductView.ShowDialog();
+            ExternalForm_FormClosed();
         }
 
         private void btnDeleteRecord_Click(object sender, EventArgs e)
@@ -73,10 +74,10 @@ namespace HeadButton.View_Layer
             EditProductProject.View_Layer.EditProductView editProductView = new EditProductProject.View_Layer.EditProductView();
             editProductView.SetValues(Presenter.productName, Presenter.unitPrice, Presenter.productIndex.ToString());
             editProductView.ShowDialog();
-            EditProductView_FormClosed();
+            ExternalForm_FormClosed();
         }
 
-        private void EditProductView_FormClosed()
+        private void ExternalForm_FormClosed()
         {
             GetProductsList();
             if (selectedItem >= 0)

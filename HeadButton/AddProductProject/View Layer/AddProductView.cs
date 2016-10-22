@@ -36,7 +36,8 @@ namespace AddProductProject.View_Layer
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
-            } 
+            }
+            this.Close();
             #endregion
         }
         private void btnClearText_Click(object sender, EventArgs e)
