@@ -47,7 +47,6 @@
             this.lblDiscontinued = new System.Windows.Forms.Label();
             this.ddlDiscontinued = new System.Windows.Forms.ComboBox();
             this.btnAddRecord = new System.Windows.Forms.Button();
-            this.btnClearText = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblProductName
@@ -167,6 +166,8 @@
             // 
             // ddlCategory
             // 
+            this.ddlCategory.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ddlCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlCategory.FormattingEnabled = true;
             this.ddlCategory.Location = new System.Drawing.Point(88, 66);
             this.ddlCategory.Name = "ddlCategory";
@@ -175,6 +176,9 @@
             // 
             // ddlSupplier
             // 
+            this.ddlSupplier.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ddlSupplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlSupplier.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.ddlSupplier.FormattingEnabled = true;
             this.ddlSupplier.Location = new System.Drawing.Point(88, 93);
             this.ddlSupplier.Name = "ddlSupplier";
@@ -192,7 +196,12 @@
             // 
             // ddlDiscontinued
             // 
+            this.ddlDiscontinued.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ddlDiscontinued.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlDiscontinued.FormattingEnabled = true;
+            this.ddlDiscontinued.Items.AddRange(new object[] {
+            "True",
+            "False"});
             this.ddlDiscontinued.Location = new System.Drawing.Point(258, 200);
             this.ddlDiscontinued.Name = "ddlDiscontinued";
             this.ddlDiscontinued.Size = new System.Drawing.Size(80, 21);
@@ -200,6 +209,7 @@
             // 
             // btnAddRecord
             // 
+            this.btnAddRecord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddRecord.Location = new System.Drawing.Point(258, 267);
             this.btnAddRecord.Name = "btnAddRecord";
             this.btnAddRecord.Size = new System.Drawing.Size(80, 28);
@@ -208,22 +218,11 @@
             this.btnAddRecord.UseVisualStyleBackColor = true;
             this.btnAddRecord.Click += new System.EventHandler(this.btnAddRecord_Click);
             // 
-            // btnClearText
-            // 
-            this.btnClearText.Location = new System.Drawing.Point(12, 267);
-            this.btnClearText.Name = "btnClearText";
-            this.btnClearText.Size = new System.Drawing.Size(74, 28);
-            this.btnClearText.TabIndex = 15;
-            this.btnClearText.Text = "Clear text";
-            this.btnClearText.UseVisualStyleBackColor = true;
-            this.btnClearText.Click += new System.EventHandler(this.btnClearText_Click);
-            // 
             // AddProductView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(352, 307);
-            this.Controls.Add(this.btnClearText);
             this.Controls.Add(this.btnAddRecord);
             this.Controls.Add(this.ddlDiscontinued);
             this.Controls.Add(this.ddlSupplier);
@@ -243,7 +242,10 @@
             this.Controls.Add(this.lblCategory);
             this.Controls.Add(this.lblSupplierID);
             this.Controls.Add(this.lblProductName);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AddProductView";
+            this.ShowIcon = false;
             this.Text = "New product";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -271,6 +273,5 @@
         private System.Windows.Forms.Label lblDiscontinued;
         private System.Windows.Forms.ComboBox ddlDiscontinued;
         private System.Windows.Forms.Button btnAddRecord;
-        private System.Windows.Forms.Button btnClearText;
     }
 }

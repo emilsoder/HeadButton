@@ -54,6 +54,7 @@ namespace HeadButton.View_Layer
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
             AddProductProject.View_Layer.AddProductView addProductView = new AddProductProject.View_Layer.AddProductView();
+            addProductView.ddlCategoryDataSource(Presenter.listCategories);
             addProductView.ShowDialog();
         }
 

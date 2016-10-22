@@ -1,4 +1,5 @@
 ﻿using AddProductProject.Model_Layer;
+using System.Collections.Generic;
 
 namespace AddProductProject.Presenter_Layer
 {
@@ -72,6 +73,13 @@ namespace AddProductProject.Presenter_Layer
             return formattedValue;
         }
 
+        public static List<string> SupplierList = new List<string>();
+
+        public static void GetSuppliers()
+        {
+            Model.GetSuppliers();
+        }
+
         public void SetStringValues(string _productName, string _unitsInStock, string _unitsInOrder, string _quantityPerUnit, string _unitPrice, string _reorderLevel, string _selectedSupplier, string _selectedCategory, string _discontinued)
         {
             Model m = new Model();
@@ -83,9 +91,12 @@ namespace AddProductProject.Presenter_Layer
             m.unitPrice = _unitPrice;
             m.reorderLevel = _reorderLevel;
 
-            m.categoryID = CategoryInt(_selectedCategory);
+            m.supplier = _selectedSupplier;
+            m.category = _selectedCategory;
+
+            //m.categoryID = CategoryInt(_selectedCategory);
             m.discontinuedInt = DiscontinuedInt(_discontinued);
-            m.supplierID = SupplierInt(_selectedSupplier);
+            //m.supplierID = SupplierInt(_selectedSupplier);
 
             m.AddRecord();
         }
