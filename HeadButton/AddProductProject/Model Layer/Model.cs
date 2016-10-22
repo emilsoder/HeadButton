@@ -22,6 +22,7 @@ namespace AddProductProject.Model_Layer
         public string discontinuedInt { get; set; } 
         #endregion
 
+        // DENNIS, HÄR SKA ADD-KODEN VIA SQL LIGGA <3
         public void AddRecord()
         {
             SqlConnection conn = new SqlConnection(connString);
