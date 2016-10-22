@@ -24,7 +24,7 @@ namespace HeadButton.Presenter_Layer
         public static string productName { get; set; }
         public static string unitPrice { get; set; }
 
-        //Listor ska fyllas i Model.  // Dessa ska användas som ListBoxarnas datakällor i MainView.
+        //Listor ska fyllas i Model.  // Ska användas som ListBoxarnas datakällor i MainView.
         public static List<string> listCategories = new List<string>();
         public static List<string> listProducts = new List<string>();
 
