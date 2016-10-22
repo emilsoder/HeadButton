@@ -128,42 +128,42 @@
             this.txtRecorderLevel.Location = new System.Drawing.Point(258, 174);
             this.txtRecorderLevel.Name = "txtRecorderLevel";
             this.txtRecorderLevel.Size = new System.Drawing.Size(80, 20);
-            this.txtRecorderLevel.TabIndex = 9;
+            this.txtRecorderLevel.TabIndex = 6;
             // 
             // txtUnitsInOrder
             // 
             this.txtUnitsInOrder.Location = new System.Drawing.Point(258, 148);
             this.txtUnitsInOrder.Name = "txtUnitsInOrder";
             this.txtUnitsInOrder.Size = new System.Drawing.Size(80, 20);
-            this.txtUnitsInOrder.TabIndex = 9;
+            this.txtUnitsInOrder.TabIndex = 4;
             // 
             // txtUnitsInStock
             // 
             this.txtUnitsInStock.Location = new System.Drawing.Point(88, 173);
             this.txtUnitsInStock.Name = "txtUnitsInStock";
             this.txtUnitsInStock.Size = new System.Drawing.Size(80, 20);
-            this.txtUnitsInStock.TabIndex = 9;
+            this.txtUnitsInStock.TabIndex = 5;
             // 
             // txtUnitPrice
             // 
             this.txtUnitPrice.Location = new System.Drawing.Point(88, 147);
             this.txtUnitPrice.Name = "txtUnitPrice";
             this.txtUnitPrice.Size = new System.Drawing.Size(80, 20);
-            this.txtUnitPrice.TabIndex = 9;
+            this.txtUnitPrice.TabIndex = 3;
             // 
             // txtQuantityPerUnit
             // 
             this.txtQuantityPerUnit.Location = new System.Drawing.Point(88, 198);
             this.txtQuantityPerUnit.Name = "txtQuantityPerUnit";
             this.txtQuantityPerUnit.Size = new System.Drawing.Size(80, 20);
-            this.txtQuantityPerUnit.TabIndex = 9;
+            this.txtQuantityPerUnit.TabIndex = 7;
             // 
             // txtProductName
             // 
             this.txtProductName.Location = new System.Drawing.Point(88, 16);
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Size = new System.Drawing.Size(250, 20);
-            this.txtProductName.TabIndex = 10;
+            this.txtProductName.TabIndex = 0;
             // 
             // ddlCategory
             // 
@@ -171,7 +171,7 @@
             this.ddlCategory.Location = new System.Drawing.Point(88, 66);
             this.ddlCategory.Name = "ddlCategory";
             this.ddlCategory.Size = new System.Drawing.Size(250, 21);
-            this.ddlCategory.TabIndex = 11;
+            this.ddlCategory.TabIndex = 1;
             // 
             // ddlSupplier
             // 
@@ -179,7 +179,7 @@
             this.ddlSupplier.Location = new System.Drawing.Point(88, 93);
             this.ddlSupplier.Name = "ddlSupplier";
             this.ddlSupplier.Size = new System.Drawing.Size(250, 21);
-            this.ddlSupplier.TabIndex = 12;
+            this.ddlSupplier.TabIndex = 2;
             // 
             // lblDiscontinued
             // 
@@ -196,23 +196,23 @@
             this.ddlDiscontinued.Location = new System.Drawing.Point(258, 200);
             this.ddlDiscontinued.Name = "ddlDiscontinued";
             this.ddlDiscontinued.Size = new System.Drawing.Size(80, 21);
-            this.ddlDiscontinued.TabIndex = 13;
+            this.ddlDiscontinued.TabIndex = 8;
             // 
             // btnAddRecord
             // 
             this.btnAddRecord.Location = new System.Drawing.Point(258, 267);
             this.btnAddRecord.Name = "btnAddRecord";
             this.btnAddRecord.Size = new System.Drawing.Size(80, 28);
-            this.btnAddRecord.TabIndex = 14;
+            this.btnAddRecord.TabIndex = 9;
             this.btnAddRecord.Text = "Add product";
             this.btnAddRecord.UseVisualStyleBackColor = true;
             this.btnAddRecord.Click += new System.EventHandler(this.btnAddRecord_Click);
             // 
             // btnClearText
             // 
-            this.btnClearText.Location = new System.Drawing.Point(12, 270);
+            this.btnClearText.Location = new System.Drawing.Point(12, 267);
             this.btnClearText.Name = "btnClearText";
-            this.btnClearText.Size = new System.Drawing.Size(64, 22);
+            this.btnClearText.Size = new System.Drawing.Size(74, 28);
             this.btnClearText.TabIndex = 15;
             this.btnClearText.Text = "Clear text";
             this.btnClearText.UseVisualStyleBackColor = true;

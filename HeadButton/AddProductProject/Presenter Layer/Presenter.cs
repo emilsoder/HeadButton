@@ -1,167 +1,93 @@
-﻿using System;
-using System.Diagnostics;
-using AddProductProject.Model_Layer;
+﻿using AddProductProject.Model_Layer;
 
 namespace AddProductProject.Presenter_Layer
 {
     public class Presenter
     {
-        public string productName { get; set; }
-        public string unitsInStock { get; set; }
-        public string unitsInOrder { get; set; }
-        public string quantityPerUnit { get; set; }
-        public string unitPrice { get; set; }
-        public string reorderLevel { get; set; }
-
-        public string selectedSupplier { get; set; }
-        public string selectedCategory { get; set; }
-        public string discontinued { get; set; }
-
-        public string supplierID { get; set; }
-        public string categoryID { get; set; }
-        public string isDiscontinued { get; set; }
-
-        public void FormatInputToIntegers()
+        public string DiscontinuedInt(string discontinued)
         {
-            ConvertDiscontinuedToInt();
-            ConvertCategoryToInt();
-            ConvertSupplierToInt();
+            string formattedValue = null;
+
+            if (discontinued == "False")
+            {
+                formattedValue = "0";
+            }
+            else if (discontinued == "True")
+            {
+                formattedValue = "1";
+            }
+            return formattedValue;
         }
-        public void ConvertDiscontinuedToInt()
+        public string CategoryInt(string category)
         {
-            string selected = discontinued.ToLower();
-            string formattedValue = "";
+            string formattedValue = null;
 
-            #region TRY
-            try
+            if (category == "cat1")
             {
-                #endregion
-                if (selected == "false")
-                {
-                    formattedValue = "0";
-                }
-                else if (selected == "true")
-                {
-                    formattedValue = "1";
-                }
-
-                isDiscontinued = formattedValue;
-
-                #region Catch Exception Handler
+                formattedValue = "1";
             }
-            catch (Exception ex)
+            else if (category == "cat2")
             {
-                Debug.WriteLine(ex.Message);
+                formattedValue = "2";
             }
-            #endregion
+            else if (category == "cat3")
+            {
+                formattedValue = "3";
+            }
+            else if (category == "cat4")
+            {
+                formattedValue = "4";
+            }
+            else if (category == "cat5")
+            {
+                formattedValue = "5";
+            }
+
+            return formattedValue;
         }
-
-        // TODO: 
-        // Ändra "cat-X " till kategoriens namn
-        public void ConvertCategoryToInt()
+        public string SupplierInt(string supplier)
         {
-            string selected = selectedCategory;
-            string formattedValue = "";
-
-            #region TRY
-            try
+            string formattedValue = null;
+            
+            if (supplier == "sup1")
             {
-                #endregion
-
-                if (selected == "cat1")
-                {
-                    formattedValue = "1";
-                }
-                else if (selected == "cat2")
-                {
-                    formattedValue = "2";
-                }
-                else if (selected == "cat3")
-                {
-                    formattedValue = "3";
-                }
-                else if (selected == "cat4")
-                {
-                    formattedValue = "4";
-                }
-                else if (selected == "cat5")
-                {
-                    formattedValue = "5";
-                }
-
-                categoryID = formattedValue;
-
-                #region Catch Exception Handler            
+                formattedValue = "1";
             }
-            catch (Exception ex)
+            else if (supplier == "sup2")
             {
-                Debug.WriteLine(ex.Message);
+                formattedValue = "2";
             }
-            #endregion
-        }
-
-        // TODO: 
-        // Ändra "sup-x " till tillverkarnas namn
-        public void ConvertSupplierToInt()
-        {
-            string selected = selectedSupplier;
-            string formattedValue = "";
-
-            #region TRY
-            try
+            else if (supplier == "sup3")
             {
-                #endregion
-                if (selected == "sup1")
-                {
-                    formattedValue = "1";
-                }
-                else if (selected == "sup2")
-                {
-                    formattedValue = "2";
-                }
-                else if (selected == "sup3")
-                {
-                    formattedValue = "3";
-                }
-                else if (selected == "sup4")
-                {
-                    formattedValue = "4";
-                }
-                else if (selected == "sup5")
-                {
-                    formattedValue = "5";
-                }
-
-                supplierID = formattedValue;
-
-                #region Catch Exception Handler
+                formattedValue = "3";
             }
-            catch (Exception ex)
+            else if (supplier == "sup4")
             {
-                Debug.WriteLine(ex.Message);
+                formattedValue = "4";
             }
-            #endregion
+            else if (supplier == "sup5")
+            {
+                formattedValue = "5";
+            }
+            return formattedValue;
         }
 
         public void SetStringValues(string _productName, string _unitsInStock, string _unitsInOrder, string _quantityPerUnit, string _unitPrice, string _reorderLevel, string _selectedSupplier, string _selectedCategory, string _discontinued)
         {
-            selectedCategory = _selectedCategory;
-            selectedSupplier = _selectedSupplier;
-            discontinued = _discontinued;
+            Model m = new Model();
 
-            FormatInputToIntegers();
+            m.productName = _productName;
+            m.unitsInStock = _unitsInStock;
+            m.unitsInOrder = _unitsInOrder;
+            m.quantityPerUnit = _quantityPerUnit;
+            m.unitPrice = _unitPrice;
+            m.reorderLevel = _reorderLevel;
 
-            productName = _productName;
-            unitsInStock = _unitsInStock;
-            unitsInOrder = _unitsInOrder;
-            quantityPerUnit = _quantityPerUnit;
-            unitPrice = _unitPrice;
-            reorderLevel = _reorderLevel;
+            m.categoryID = CategoryInt(_selectedCategory);
+            m.discontinuedInt = DiscontinuedInt(_discontinued);
+            m.supplierID = SupplierInt(_selectedSupplier);
 
-            Model model = new Model();
-            model.AddRecord();
+            m.AddRecord();
         }
-
-        public bool sqlTransactionSuccessful { get; set; }
     }
 }

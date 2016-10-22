@@ -1,27 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using HeadButton.Presenter_Layer;
 using HeadButton.Model_Layer;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
-using AddProductProject;
 
 namespace HeadButton.View_Layer
 {
     public partial class MainView : Form
     {
-
         public MainView()
         {
             InitializeComponent();
             OnFormLoad();
+        }
+
+        private void OnFormLoad()
+        {
+            Presenter.OnStartUp();
+            lstCategories.DataSource = Presenter.listCategories;
         }
 
         private void lstCategories_SelectedIndexChanged(object sender, EventArgs e)
@@ -48,60 +45,10 @@ namespace HeadButton.View_Layer
                 Debug.WriteLine(ex.Message);
             }
         }
+
         private void lstProducts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtUnitPrice.Clear();
-            txtProductName.Clear();
-
-            var regexString = Regex.Replace(lstProducts.SelectedItem.ToString(), "[^0-9]", "");
-
-            Presenter.productIndex = Convert.ToInt32(regexString);
-            Presenter.ProductItemRequest();
-
-            txtProductName.Text = Presenter.productName;
-            txtUnitPrice.Text = Presenter.unitPrice.ToString();
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-           int selectedItem = lstProducts.SelectedIndex;
-
-            try
-            {
-                if ((txtNewUnitPrice.Text != "") && (txtNewProductName.Text != ""))
-                {
-                    Presenter.newUnitPrice = txtNewUnitPrice.Text;
-                    Presenter.newProductName = txtNewProductName.Text;
-
-                    Model.Update();
-                    ClearTextBoxes();
-                    GetProductsList();
-                    lstProducts.SelectedIndex = selectedItem;
-
-                }
-                else
-                {
-                    MessageBox.Show("Fälten får inte vara tomma!");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Felmeddelande");
-            }
-        }
-
-        public void ClearTextBoxes()
-        {
-            txtUnitPrice.Text = null;
-            txtProductName.Text = null;
-            txtNewProductName.Text = null;
-            txtNewUnitPrice.Text = null;
-        }
-
-        private void OnFormLoad()
-        {
-            Presenter.OnStartUp();
-            lstCategories.DataSource = Presenter.listCategories;
+            Presenter.ProductRequest(lstProducts.SelectedItem.ToString());
         }
 
         private void btnAddProduct_Click(object sender, EventArgs e)
@@ -109,5 +56,62 @@ namespace HeadButton.View_Layer
             AddProductProject.View_Layer.AddProductView addProductView = new AddProductProject.View_Layer.AddProductView();
             addProductView.ShowDialog();
         }
+
+        private void btnDeleteRecord_Click(object sender, EventArgs e)
+        {
+            Presenter presenter = new Presenter();
+            presenter.DeleteProduct();
+        }
+
+        private int selectedItem { get; set; }
+
+        private void btnEditSelected_Click(object sender, EventArgs e)
+        {
+            selectedItem = lstProducts.SelectedIndex;
+
+            EditProductProject.View_Layer.EditProductView editProductView = new EditProductProject.View_Layer.EditProductView();
+            editProductView.SetValues(Presenter.productName, Presenter.unitPrice, Presenter.productIndex.ToString());
+            editProductView.ShowDialog();
+            EditProductView_FormClosed();
+        }
+
+        private void EditProductView_FormClosed()
+        {
+            GetProductsList();
+            if (selectedItem >= 0)
+            {
+                lstProducts.SelectedIndex = selectedItem;
+            }
+        }
     }
 }
+
+//var regexString = Regex.Replace(lstProducts.SelectedItem.ToString(), "[^0-9]", "");
+
+            //Presenter.productIndex = Convert.ToInt32(regexString);
+            //Presenter.ProductItemRequest();
+        //private void btnSave_Click(object sender, EventArgs e)
+        //{
+        //    //int selectedItem = lstProducts.SelectedIndex;
+
+        //    //try
+        //    //{
+        //    //    if ((txtNewUnitPrice.Text != "") && (txtNewProductName.Text != ""))
+        //    //    {
+        //    //        Presenter.newUnitPrice = txtNewUnitPrice.Text;
+        //    //        Presenter.newProductName = txtNewProductName.Text;
+        //    //        Model.Update(); //OK
+        //    //        ClearTextBoxes(); // ??
+        //    //        GetProductsList(); // OK
+        //    //        lstProducts.SelectedIndex = selectedItem; //OK
+        //    //    }
+        //    //    else
+        //    //    {
+        //    //        MessageBox.Show("Fälten får inte vara tomma!");
+        //    //    }
+        //    //}
+        //    //catch (Exception ex)
+        //    //{
+        //    //    MessageBox.Show(ex.Message, "Felmeddelande");
+        //    //}
+        //}

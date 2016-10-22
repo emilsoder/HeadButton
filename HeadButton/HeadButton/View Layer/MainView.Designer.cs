@@ -30,156 +30,120 @@
         {
             this.lstCategories = new System.Windows.Forms.ListBox();
             this.lstProducts = new System.Windows.Forms.ListBox();
-            this.txtUnitPrice = new System.Windows.Forms.TextBox();
-            this.txtProductName = new System.Windows.Forms.TextBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.txtNewUnitPrice = new System.Windows.Forms.TextBox();
-            this.lblUP = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtNewProductName = new System.Windows.Forms.TextBox();
-            this.lblNewName = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
             this.panelTxtBoxes = new System.Windows.Forms.Panel();
-            this.btnAddProduct = new System.Windows.Forms.Button();
+            this.btnEditSelected = new System.Windows.Forms.Button();
+            this.btnDeleteRecord = new System.Windows.Forms.Button();
+            this.btnAddRecord = new System.Windows.Forms.Button();
+            this.panelForLists = new System.Windows.Forms.Panel();
             this.panelTxtBoxes.SuspendLayout();
+            this.panelForLists.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstCategories
             // 
             this.lstCategories.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lstCategories.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstCategories.FormattingEnabled = true;
+            this.lstCategories.ItemHeight = 15;
             this.lstCategories.Location = new System.Drawing.Point(0, 0);
             this.lstCategories.Name = "lstCategories";
-            this.lstCategories.Size = new System.Drawing.Size(151, 363);
-            this.lstCategories.TabIndex = 0;
+            this.lstCategories.Size = new System.Drawing.Size(177, 404);
+            this.lstCategories.TabIndex = 1;
             this.lstCategories.SelectedIndexChanged += new System.EventHandler(this.lstCategories_SelectedIndexChanged);
             // 
             // lstProducts
             // 
             this.lstProducts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstProducts.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstProducts.FormattingEnabled = true;
-            this.lstProducts.Location = new System.Drawing.Point(151, 0);
+            this.lstProducts.ItemHeight = 15;
+            this.lstProducts.Location = new System.Drawing.Point(177, 0);
             this.lstProducts.Name = "lstProducts";
-            this.lstProducts.Size = new System.Drawing.Size(283, 363);
-            this.lstProducts.TabIndex = 1;
+            this.lstProducts.Size = new System.Drawing.Size(269, 404);
+            this.lstProducts.TabIndex = 2;
             this.lstProducts.SelectedIndexChanged += new System.EventHandler(this.lstProducts_SelectedIndexChanged);
-            // 
-            // txtUnitPrice
-            // 
-            this.txtUnitPrice.Location = new System.Drawing.Point(67, 88);
-            this.txtUnitPrice.Name = "txtUnitPrice";
-            this.txtUnitPrice.ReadOnly = true;
-            this.txtUnitPrice.Size = new System.Drawing.Size(193, 20);
-            this.txtUnitPrice.TabIndex = 2;
-            // 
-            // txtProductName
-            // 
-            this.txtProductName.Location = new System.Drawing.Point(67, 20);
-            this.txtProductName.Name = "txtProductName";
-            this.txtProductName.ReadOnly = true;
-            this.txtProductName.Size = new System.Drawing.Size(193, 20);
-            this.txtProductName.TabIndex = 3;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(184, 152);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(76, 27);
-            this.btnSave.TabIndex = 4;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // txtNewUnitPrice
-            // 
-            this.txtNewUnitPrice.Location = new System.Drawing.Point(67, 114);
-            this.txtNewUnitPrice.Name = "txtNewUnitPrice";
-            this.txtNewUnitPrice.Size = new System.Drawing.Size(193, 20);
-            this.txtNewUnitPrice.TabIndex = 5;
-            // 
-            // lblUP
-            // 
-            this.lblUP.AutoSize = true;
-            this.lblUP.Location = new System.Drawing.Point(35, 91);
-            this.lblUP.Name = "lblUP";
-            this.lblUP.Size = new System.Drawing.Size(31, 13);
-            this.lblUP.TabIndex = 6;
-            this.lblUP.Text = "Price";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 117);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "New price";
-            // 
-            // txtNewProductName
-            // 
-            this.txtNewProductName.Location = new System.Drawing.Point(67, 46);
-            this.txtNewProductName.Name = "txtNewProductName";
-            this.txtNewProductName.Size = new System.Drawing.Size(193, 20);
-            this.txtNewProductName.TabIndex = 7;
-            // 
-            // lblNewName
-            // 
-            this.lblNewName.AutoSize = true;
-            this.lblNewName.Location = new System.Drawing.Point(6, 49);
-            this.lblNewName.Name = "lblNewName";
-            this.lblNewName.Size = new System.Drawing.Size(60, 13);
-            this.lblNewName.TabIndex = 8;
-            this.lblNewName.Text = "New Name";
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(31, 23);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(35, 13);
-            this.lblName.TabIndex = 9;
-            this.lblName.Text = "Name";
             // 
             // panelTxtBoxes
             // 
-            this.panelTxtBoxes.Controls.Add(this.btnAddProduct);
-            this.panelTxtBoxes.Controls.Add(this.lblName);
-            this.panelTxtBoxes.Controls.Add(this.btnSave);
-            this.panelTxtBoxes.Controls.Add(this.lblNewName);
-            this.panelTxtBoxes.Controls.Add(this.txtUnitPrice);
-            this.panelTxtBoxes.Controls.Add(this.txtProductName);
-            this.panelTxtBoxes.Controls.Add(this.txtNewProductName);
-            this.panelTxtBoxes.Controls.Add(this.txtNewUnitPrice);
-            this.panelTxtBoxes.Controls.Add(this.label1);
-            this.panelTxtBoxes.Controls.Add(this.lblUP);
-            this.panelTxtBoxes.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelTxtBoxes.Location = new System.Drawing.Point(434, 0);
+            this.panelTxtBoxes.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelTxtBoxes.Controls.Add(this.btnEditSelected);
+            this.panelTxtBoxes.Controls.Add(this.btnDeleteRecord);
+            this.panelTxtBoxes.Controls.Add(this.btnAddRecord);
+            this.panelTxtBoxes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTxtBoxes.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panelTxtBoxes.Location = new System.Drawing.Point(0, 0);
             this.panelTxtBoxes.Name = "panelTxtBoxes";
-            this.panelTxtBoxes.Size = new System.Drawing.Size(269, 363);
+            this.panelTxtBoxes.Size = new System.Drawing.Size(446, 47);
             this.panelTxtBoxes.TabIndex = 10;
             // 
-            // btnAddProduct
+            // btnEditSelected
             // 
-            this.btnAddProduct.Location = new System.Drawing.Point(113, 312);
-            this.btnAddProduct.Name = "btnAddProduct";
-            this.btnAddProduct.Size = new System.Drawing.Size(75, 23);
-            this.btnAddProduct.TabIndex = 11;
-            this.btnAddProduct.Text = "Add product";
-            this.btnAddProduct.UseVisualStyleBackColor = true;
-            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
+            this.btnEditSelected.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.btnEditSelected.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnEditSelected.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
+            this.btnEditSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditSelected.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditSelected.Location = new System.Drawing.Point(220, 10);
+            this.btnEditSelected.Name = "btnEditSelected";
+            this.btnEditSelected.Size = new System.Drawing.Size(104, 27);
+            this.btnEditSelected.TabIndex = 4;
+            this.btnEditSelected.Text = "Edit selected";
+            this.btnEditSelected.UseVisualStyleBackColor = false;
+            this.btnEditSelected.Click += new System.EventHandler(this.btnEditSelected_Click);
+            // 
+            // btnDeleteRecord
+            // 
+            this.btnDeleteRecord.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.btnDeleteRecord.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnDeleteRecord.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.btnDeleteRecord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteRecord.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteRecord.Location = new System.Drawing.Point(330, 10);
+            this.btnDeleteRecord.Name = "btnDeleteRecord";
+            this.btnDeleteRecord.Size = new System.Drawing.Size(104, 27);
+            this.btnDeleteRecord.TabIndex = 5;
+            this.btnDeleteRecord.Text = "Delete selected";
+            this.btnDeleteRecord.UseVisualStyleBackColor = false;
+            this.btnDeleteRecord.Click += new System.EventHandler(this.btnDeleteRecord_Click);
+            // 
+            // btnAddRecord
+            // 
+            this.btnAddRecord.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.btnAddRecord.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
+            this.btnAddRecord.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SlateGray;
+            this.btnAddRecord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddRecord.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddRecord.Location = new System.Drawing.Point(12, 10);
+            this.btnAddRecord.Name = "btnAddRecord";
+            this.btnAddRecord.Size = new System.Drawing.Size(104, 27);
+            this.btnAddRecord.TabIndex = 3;
+            this.btnAddRecord.Text = "Add product";
+            this.btnAddRecord.UseVisualStyleBackColor = false;
+            this.btnAddRecord.Click += new System.EventHandler(this.btnAddProduct_Click);
+            // 
+            // panelForLists
+            // 
+            this.panelForLists.Controls.Add(this.lstProducts);
+            this.panelForLists.Controls.Add(this.lstCategories);
+            this.panelForLists.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelForLists.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panelForLists.Location = new System.Drawing.Point(0, 47);
+            this.panelForLists.Name = "panelForLists";
+            this.panelForLists.Size = new System.Drawing.Size(446, 404);
+            this.panelForLists.TabIndex = 11;
             // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(703, 363);
-            this.Controls.Add(this.lstProducts);
+            this.ClientSize = new System.Drawing.Size(446, 451);
+            this.Controls.Add(this.panelForLists);
             this.Controls.Add(this.panelTxtBoxes);
-            this.Controls.Add(this.lstCategories);
             this.Name = "MainView";
-            this.Text = "Form1";
+            this.ShowIcon = false;
+            this.Text = "Products";
             this.panelTxtBoxes.ResumeLayout(false);
-            this.panelTxtBoxes.PerformLayout();
+            this.panelForLists.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -188,17 +152,11 @@
 
         private System.Windows.Forms.ListBox lstCategories;
         private System.Windows.Forms.ListBox lstProducts;
-        private System.Windows.Forms.TextBox txtUnitPrice;
-        private System.Windows.Forms.TextBox txtProductName;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.TextBox txtNewUnitPrice;
-        private System.Windows.Forms.Label lblUP;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtNewProductName;
-        private System.Windows.Forms.Label lblNewName;
-        private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Panel panelTxtBoxes;
-        private System.Windows.Forms.Button btnAddProduct;
+        private System.Windows.Forms.Button btnAddRecord;
+        private System.Windows.Forms.Button btnDeleteRecord;
+        private System.Windows.Forms.Panel panelForLists;
+        private System.Windows.Forms.Button btnEditSelected;
     }
 }
 

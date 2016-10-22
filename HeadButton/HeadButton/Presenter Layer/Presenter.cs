@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace HeadButton.Presenter_Layer
 {
@@ -22,12 +24,7 @@ namespace HeadButton.Presenter_Layer
         public static string productName { get; set; }
         public static string unitPrice { get; set; }
 
-        // Nya värden
-        public static string newProductName { get; set; }
-        public static string newUnitPrice { get; set; }
-
-        //Listor ska fyllas i Model. 
-        //Dessa ska användas som ListBoxarnas datakällor i MainView.
+        //Listor ska fyllas i Model.  // Dessa ska användas som ListBoxarnas datakällor i MainView.
         public static List<string> listCategories = new List<string>();
         public static List<string> listProducts = new List<string>();
 
@@ -41,9 +38,19 @@ namespace HeadButton.Presenter_Layer
             Model.GetProductsByIndex();
         }
 
-        public static void ProductItemRequest()
+        public static void ProductRequest(string _selectedItem)
         {
+            var regexString = Regex.Replace(_selectedItem, "[^0-9]", "");
+            productIndex = Convert.ToInt32(regexString);
             Model.SetTextBoxes();
+        }
+
+        public void DeleteProduct()
+        {
+            if ((MessageBox.Show("Are you sure you want to delete selected product?", "Warning!", MessageBoxButtons.YesNo) == DialogResult.OK))
+            {
+                Model.DeleteRecord(productIndex.ToString());
+            }
         }
     }
 }

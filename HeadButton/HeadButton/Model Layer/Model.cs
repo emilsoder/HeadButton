@@ -101,21 +101,25 @@ namespace HeadButton.Model_Layer
             conn.Close();
         }
 
-        public static void Update()
+        public static void DeleteRecord(string _productIndex)
         {
-            SqlConnection conn = new SqlConnection(connString);
-            string sqlQuery = "UPDATE [dbo].[Products] SET [ProductName]=@ProductName, [UnitPrice]=@UnitPrice WHERE [ProductID]=@ProductID";
 
-            SqlCommand cmd = new SqlCommand(sqlQuery, conn);
-
-            cmd.Parameters.AddWithValue("@ProductName", Presenter.newProductName);
-            cmd.Parameters.AddWithValue("@UnitPrice", Presenter.newUnitPrice);
-            cmd.Parameters.AddWithValue("@ProductID", Presenter.productIndex);
-
-            conn.Open();
-            cmd.ExecuteNonQuery();
-
-            conn.Close();
         }
     }
 }
+        //public static void Update()
+        //{
+        //    SqlConnection conn = new SqlConnection(connString);
+        //    string sqlQuery = "UPDATE [dbo].[Products] SET [ProductName]=@ProductName, [UnitPrice]=@UnitPrice WHERE [ProductID]=@ProductID";
+
+        //    SqlCommand cmd = new SqlCommand(sqlQuery, conn);
+
+        //    cmd.Parameters.AddWithValue("@ProductName", Presenter.newProductName);
+        //    cmd.Parameters.AddWithValue("@UnitPrice", Presenter.newUnitPrice);
+        //    cmd.Parameters.AddWithValue("@ProductID", Presenter.productIndex);
+
+        //    conn.Open();
+        //    cmd.ExecuteNonQuery();
+
+        //    conn.Close();
+        //}

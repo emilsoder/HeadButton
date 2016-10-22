@@ -11,35 +11,24 @@ namespace AddProductProject.View_Layer
         {
             InitializeComponent();
         }
-
         private void btnAddRecord_Click(object sender, EventArgs e)
         {
             Presenter presenter = new Presenter();
-
             try
             {
-                presenter.SetStringValues(txtProductName.Text, txtUnitsInStock.Text, txtUnitsInOrder.Text, txtQuantityPerUnit.Text, txtUnitPrice.Text, txtRecorderLevel.Text, ddlSupplier.SelectedItem.ToString(), ddlCategory.SelectedItem.ToString(), ddlDiscontinued.SelectedItem.ToString());
+                presenter.SetStringValues(txtProductName.Text, txtUnitsInStock.Text, txtUnitsInOrder.Text, txtQuantityPerUnit.Text, txtUnitPrice.Text, txtRecorderLevel.Text, ddlSupplier.Text.ToString(), ddlCategory.Text.ToString(), ddlDiscontinued.Text.ToString());
             }
+            #region EXCEPTION INFO FOR DEBUG **** REMOVE WHEN TESTING DONE ****
             catch (Exception ex)
             {
-                Debug.WriteLine("****** FELMEDDELANDE!!! ******  "  + ex.Message);
-            }
-            if (presenter.sqlTransactionSuccessful == true)
-            {
-                MessageBox.Show("Product added!", "Successful!");
-                presenter.sqlTransactionSuccessful = false;
-            }
-            else
-            {
-                MessageBox.Show("Could not save the new product", "Error message");
-            }
+                Debug.WriteLine(ex);
+            } 
+            #endregion
         }
-
         private void btnClearText_Click(object sender, EventArgs e)
         {
             ResetTextBoxes();
         }
-
         private void ResetTextBoxes()
         {
             txtProductName.Text = "";
@@ -51,3 +40,5 @@ namespace AddProductProject.View_Layer
         }
     }
 }
+
+             //ddlSupplier.SelectedItem.ToString(), ddlCategory.SelectedItem.ToString(), ddlDiscontinued.SelectedItem.ToString()
