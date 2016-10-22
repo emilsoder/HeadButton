@@ -16,7 +16,7 @@ namespace HeadButton.Presenter_Layer
 
     public class Presenter
     {
-        // Hämta indexen vid Click-Event
+        // Hämta indexen vid Click-event
         public static int categoryIndex { get; set; }
         public static int productIndex { get; set; }
 
