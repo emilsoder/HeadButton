@@ -66,8 +66,9 @@ namespace HeadButton.View_Layer
 
         private void btnDeleteRecord_Click(object sender, EventArgs e)
         {
-            Presenter presenter = new Presenter();
-            presenter.DeleteProduct();
+            //Presenter presenter = new Presenter();
+            Presenter.DeleteProduct(lstProducts.SelectedItem.ToString());
+            GetProductsList();
         }
 
         private int selectedItem { get; set; }
@@ -79,6 +80,7 @@ namespace HeadButton.View_Layer
             EditProductProject.View_Layer.EditProductView editProductView = new EditProductProject.View_Layer.EditProductView();
             editProductView.SetValues(Presenter.productName, Presenter.unitPrice, Presenter.selectedProductName);
             editProductView.ShowDialog();
+            editProductView.TopMost = true;
             AddProduct_FormClosed();
         }
 

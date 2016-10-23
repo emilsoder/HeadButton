@@ -18,7 +18,8 @@ namespace HeadButton.Presenter_Layer
     {
         // Hämta indexen vid Click-event
         //public static int categoryIndex { get; set; }
-        public static int productIndex { get; set; }
+        //public static int productIndex { get; set; }
+
         public static string selectedProductName { get; set; }
 
         // Hämtade värden
@@ -43,14 +44,16 @@ namespace HeadButton.Presenter_Layer
         public static void ProductRequest(string _selectedItem)
         {
             selectedProductName = _selectedItem;
-            Model.SetTextBoxes();
+            Model.GetProductToEdit(selectedProductName);
         }
 
-        public void DeleteProduct()
+        public static void DeleteProduct(string _selectedItem) //Changed to static ** test **
         {
-            if ((MessageBox.Show("Are you sure you want to delete selected product?", "Warning!", MessageBoxButtons.YesNo) == DialogResult.OK))
+            selectedProductName = _selectedItem;
+
+            if ((MessageBox.Show("Are you sure you want to delete selected product?", "Warning!", MessageBoxButtons.YesNo) == DialogResult.Yes))
             {
-                Model.DeleteRecord(productIndex.ToString());
+                Model.RemoveProduct(selectedProductName);
             }
         }
     }

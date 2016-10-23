@@ -1,8 +1,6 @@
 ﻿using System.Data.SqlClient;
 using System.Configuration;
-using System.Diagnostics;
 using System.Windows.Forms;
-using System.Collections.Generic;
 using AddProductProject.Presenter_Layer;
 
 namespace AddProductProject.Model_Layer

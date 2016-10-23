@@ -1,7 +1,6 @@
 ﻿using AddProductProject.Presenter_Layer;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace AddProductProject.View_Layer

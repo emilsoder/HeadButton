@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EditProductProject.Model_Layer;
+﻿using EditProductProject.Model_Layer;
 
 namespace EditProductProject.Presenter_Layer
 {
