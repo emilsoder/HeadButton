@@ -79,6 +79,7 @@
             // btnEditSelected
             // 
             this.btnEditSelected.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.btnEditSelected.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnEditSelected.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
             this.btnEditSelected.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.btnEditSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -94,6 +95,7 @@
             // btnDeleteRecord
             // 
             this.btnDeleteRecord.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.btnDeleteRecord.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnDeleteRecord.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnDeleteRecord.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.btnDeleteRecord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -109,8 +111,9 @@
             // btnAddRecord
             // 
             this.btnAddRecord.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.btnAddRecord.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Green;
-            this.btnAddRecord.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SlateGray;
+            this.btnAddRecord.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnAddRecord.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.btnAddRecord.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
             this.btnAddRecord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddRecord.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddRecord.Location = new System.Drawing.Point(12, 10);

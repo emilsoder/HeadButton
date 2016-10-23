@@ -23,15 +23,17 @@ namespace HeadButton.View_Layer
 
         private void lstCategories_SelectedIndexChanged(object sender, EventArgs e)
         {
-            GetProductsList();
+            if (lstCategories.SelectedIndex != -1)
+            {
+                GetProductsList();
+            }
         }
 
         private void GetProductsList()
         {
             lstProducts.Items.Clear();
             Presenter.listProducts.Clear();
-            Presenter.categoryIndex = lstCategories.SelectedIndex;
-            Presenter.GetProducts();
+            Presenter.GetProducts(lstCategories.SelectedIndex);
 
             try
             {
@@ -48,7 +50,10 @@ namespace HeadButton.View_Layer
 
         private void lstProducts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Presenter.ProductRequest(lstProducts.SelectedItem.ToString());
+            if (lstProducts.SelectedIndex != -1)
+            {
+                Presenter.ProductRequest(lstProducts.SelectedItem.ToString());
+            }
         }
 
         private void btnAddProduct_Click(object sender, EventArgs e)
@@ -56,7 +61,7 @@ namespace HeadButton.View_Layer
             AddProductProject.View_Layer.AddProductView addProductView = new AddProductProject.View_Layer.AddProductView();
             addProductView.ddlCategoryDataSource(Presenter.listCategories);
             addProductView.ShowDialog();
-            ExternalForm_FormClosed();
+            AddProduct_FormClosed();
         }
 
         private void btnDeleteRecord_Click(object sender, EventArgs e)
@@ -72,48 +77,15 @@ namespace HeadButton.View_Layer
             selectedItem = lstProducts.SelectedIndex;
 
             EditProductProject.View_Layer.EditProductView editProductView = new EditProductProject.View_Layer.EditProductView();
-            editProductView.SetValues(Presenter.productName, Presenter.unitPrice, Presenter.productIndex.ToString());
+            editProductView.SetValues(Presenter.productName, Presenter.unitPrice, Presenter.selectedProductName);
             editProductView.ShowDialog();
-            ExternalForm_FormClosed();
+            AddProduct_FormClosed();
         }
 
-        private void ExternalForm_FormClosed()
+        private void AddProduct_FormClosed()
         {
             GetProductsList();
-            if (selectedItem >= 0)
-            {
-                lstProducts.SelectedIndex = selectedItem;
-            }
+            lstProducts.SelectedIndex = selectedItem;
         }
     }
 }
-
-//var regexString = Regex.Replace(lstProducts.SelectedItem.ToString(), "[^0-9]", "");
-
-            //Presenter.productIndex = Convert.ToInt32(regexString);
-            //Presenter.ProductItemRequest();
-        //private void btnSave_Click(object sender, EventArgs e)
-        //{
-        //    //int selectedItem = lstProducts.SelectedIndex;
-
-        //    //try
-        //    //{
-        //    //    if ((txtNewUnitPrice.Text != "") && (txtNewProductName.Text != ""))
-        //    //    {
-        //    //        Presenter.newUnitPrice = txtNewUnitPrice.Text;
-        //    //        Presenter.newProductName = txtNewProductName.Text;
-        //    //        Model.Update(); //OK
-        //    //        ClearTextBoxes(); // ??
-        //    //        GetProductsList(); // OK
-        //    //        lstProducts.SelectedIndex = selectedItem; //OK
-        //    //    }
-        //    //    else
-        //    //    {
-        //    //        MessageBox.Show("Fälten får inte vara tomma!");
-        //    //    }
-        //    //}
-        //    //catch (Exception ex)
-        //    //{
-        //    //    MessageBox.Show(ex.Message, "Felmeddelande");
-        //    //}
-        //}

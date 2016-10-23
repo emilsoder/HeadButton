@@ -17,14 +17,16 @@ namespace HeadButton.Presenter_Layer
     public class Presenter
     {
         // Hämta indexen vid Click-event
-        public static int categoryIndex { get; set; }
+        //public static int categoryIndex { get; set; }
         public static int productIndex { get; set; }
+        public static string selectedProductName { get; set; }
 
         // Hämtade värden
         public static string productName { get; set; }
         public static string unitPrice { get; set; }
 
-        //Listor ska fyllas i Model.  // Ska användas som ListBoxarnas datakällor i MainView.
+        //Listor ska fyllas i Model.  
+        // Ska användas som ListBoxarnas datakällor i MainView.
         public static List<string> listCategories = new List<string>();
         public static List<string> listProducts = new List<string>();
 
@@ -33,15 +35,14 @@ namespace HeadButton.Presenter_Layer
             Model.GetCategories();
         }
 
-        public static void GetProducts()
+        public static void GetProducts(int _categoryIndex)
         {
-            Model.GetProductsByIndex();
+            Model.GetProductsByIndex(_categoryIndex + 1);
         }
 
         public static void ProductRequest(string _selectedItem)
         {
-            var regexString = Regex.Replace(_selectedItem, "[^0-9]", "");
-            productIndex = Convert.ToInt32(regexString);
+            selectedProductName = _selectedItem;
             Model.SetTextBoxes();
         }
 

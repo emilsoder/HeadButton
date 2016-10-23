@@ -32,16 +32,11 @@ namespace AddProductProject.View_Layer
             {
                 presenter.SetStringValues(txtProductName.Text, txtUnitsInStock.Text, txtUnitsInOrder.Text, txtQuantityPerUnit.Text, txtUnitPrice.Text, txtRecorderLevel.Text, ddlSupplier.SelectedItem.ToString(), ddlCategory.SelectedItem.ToString(), ddlDiscontinued.Text.ToString());
             }
-            #region EXCEPTION INFO FOR DEBUG **** REMOVE WHEN TESTING DONE ****
             catch (Exception ex)
             {
-                Debug.WriteLine(ex);
+                MessageBox.Show(ex.Message);
             }
             this.Close();
-            #endregion
-        }
-        private void btnClearText_Click(object sender, EventArgs e)
-        {
             ResetTextBoxes();
         }
         private void ResetTextBoxes()

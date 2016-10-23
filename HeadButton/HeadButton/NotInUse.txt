@@ -1,0 +1,196 @@
+﻿            //Presenter.categoryIndex = lstCategories.SelectedIndex;
+            //editProductView.SetValues(Presenter.productName, Presenter.unitPrice, Presenter.productIndex.ToString());
+
+//var regexString = Regex.Replace(lstProducts.SelectedItem.ToString(), "[^0-9]", "");
+
+            //Presenter.productIndex = Convert.ToInt32(regexString);
+            //Presenter.ProductItemRequest();
+        //private void btnSave_Click(object sender, EventArgs e)
+        //{
+        //    //int selectedItem = lstProducts.SelectedIndex;
+
+        //    //try
+        //    //{
+        //    //    if ((txtNewUnitPrice.Text != "") && (txtNewProductName.Text != ""))
+        //    //    {
+        //    //        Presenter.newUnitPrice = txtNewUnitPrice.Text;
+        //    //        Presenter.newProductName = txtNewProductName.Text;
+        //    //        Model.Update(); //OK
+        //    //        ClearTextBoxes(); // ??
+        //    //        GetProductsList(); // OK
+        //    //        lstProducts.SelectedIndex = selectedItem; //OK
+        //    //    }
+        //    //    else
+        //    //    {
+        //    //        MessageBox.Show("Fälten får inte vara tomma!");
+        //    //    }
+        //    //}
+        //    //catch (Exception ex)
+        //    //{
+        //    //    MessageBox.Show(ex.Message, "Felmeddelande");
+        //    //}
+        //}
+
+            //var regexString = Regex.Replace(_selectedItem, "[^0-9]", "");
+            //productIndex = Convert.ToInt32(regexString);
+
+
+
+			 #region old
+            //var selectedItem = Presenter.categoryIndex + 1;
+
+            //SqlConnection conn = new SqlConnection(connString);
+            //conn.Open();
+
+            //SqlCommand cmd = conn.CreateCommand();
+            //cmd.CommandText = "SELECT [ProductName], [ProductID] FROM [dbo].[Products] WHERE CategoryID = @CategoryID";
+            //cmd.Parameters.AddWithValue("@CategoryID", selectedItem.ToString());
+
+            //SqlDataReader reader = cmd.ExecuteReader();
+
+            //while (reader.Read())
+            //{
+            //    Presenter.listProducts.Add(reader.GetValue(1).ToString() + ". " + reader.GetValue(0).ToString());
+            //}
+
+            //reader.Close();
+            //conn.Close();
+            #endregion
+
+
+
+			            #region old2
+            //cmd.CommandText = "SELECT [ProductName], [ProductID] FROM [dbo].[Products] WHERE CategoryID = @CategoryID";
+            #endregion
+        //private static void SetUnitPrice()
+        //{
+        //    //int selectedItem = Presenter.productIndex;
+
+        //    SqlConnection conn = new SqlConnection(connString);
+        //    conn.Open();
+
+        //    SqlCommand cmd = conn.CreateCommand();
+        //    cmd.CommandText = "SELECT [UnitPrice] FROM [dbo].[Products] WHERE ProductID = @ProductID";
+        //    cmd.Parameters.AddWithValue("@ProductID", Presenter.selectedProductName);
+
+        //    SqlDataReader reader = cmd.ExecuteReader();
+        //    reader.Read();
+
+        //    Presenter.unitPrice = (reader.GetValue(0).ToString());
+
+        //    reader.Close();
+        //    conn.Close();
+        //}
+
+        //private static void SetProductName()
+        //{
+        //    //int selectedItem = Presenter.productIndex;
+
+        //    SqlConnection conn = new SqlConnection(connString);
+        //    conn.Open();
+
+        //    SqlCommand cmd = conn.CreateCommand();
+        //    cmd.CommandText = "SELECT [ProductName] FROM [dbo].[Products] WHERE ProductID = @ProductID";
+
+        //    cmd.Parameters.AddWithValue("@ProductID", Presenter.selectedProductName);
+
+        //    SqlDataReader reader = cmd.ExecuteReader();
+        //    reader.Read();
+
+        //    Presenter.productName = (reader.GetValue(0).ToString());
+
+        //    reader.Close();
+        //    conn.Close();
+        //}
+
+		   //m.supplierID = SupplierInt(_selectedSupplier);
+            //m.categoryID = CategoryInt(_selectedCategory);
+
+
+//#region PROCEDURE 3: GET UNITPRICE
+            //SqlConnection conn3 = new SqlConnection(connString);
+            //conn3.Open();
+            //SqlCommand cmd3 = conn3.CreateCommand();
+            //cmd3.CommandText = "SELECT [UnitPrice] FROM [dbo].[Products] WHERE ProductID = @ProductID";
+            //cmd3.Parameters.AddWithValue("@ProductID", _id);
+
+            //SqlDataReader reader3 = cmd3.ExecuteReader();
+            //reader3.Read();
+            //Presenter.unitPrice = (reader3.GetValue(0).ToString());
+            //reader3.Close();
+            //conn3.Close();
+            //#endregion
+        //public static void Update()
+        //{
+        //    SqlConnection conn = new SqlConnection(connString);
+        //    string sqlQuery = "UPDATE [dbo].[Products] SET [ProductName]=@ProductName, [UnitPrice]=@UnitPrice WHERE [ProductID]=@ProductID";
+
+        //    SqlCommand cmd = new SqlCommand(sqlQuery, conn);
+
+        //    cmd.Parameters.AddWithValue("@ProductName", Presenter.newProductName);
+        //    cmd.Parameters.AddWithValue("@UnitPrice", Presenter.newUnitPrice);
+        //    cmd.Parameters.AddWithValue("@ProductID", Presenter.productIndex);
+
+        //    conn.Open();
+        //    cmd.ExecuteNonQuery();
+
+        //    conn.Close();
+        //}
+
+
+
+
+
+		        public string CategoryInt(string category)
+        {
+            string formattedValue = null;
+
+            if (category == "cat1")
+            {
+                formattedValue = "1";
+            }
+            else if (category == "cat2")
+            {
+                formattedValue = "2";
+            }
+            else if (category == "cat3")
+            {
+                formattedValue = "3";
+            }
+            else if (category == "cat4")
+            {
+                formattedValue = "4";
+            }
+            else if (category == "cat5")
+            {
+                formattedValue = "5";
+            }
+
+            return formattedValue;
+        }
+        public string SupplierInt(string supplier)
+        {
+            string formattedValue = null;
+            
+            if (supplier == "sup1")
+            {
+                formattedValue = "1";
+            }
+            else if (supplier == "sup2")
+            {
+                formattedValue = "2";
+            }
+            else if (supplier == "sup3")
+            {
+                formattedValue = "3";
+            }
+            else if (supplier == "sup4")
+            {
+                formattedValue = "4";
+            }
+            else if (supplier == "sup5")
+            {
+                formattedValue = "5";
+            }
+            return formattedValue;
+        }

@@ -13,11 +13,15 @@ namespace EditProductProject.View_Layer
             InitializeComponent();
         }
 
+        public static string oldName { get; set; }
+
         public void SetValues(string _productName, string _unitPrice, string _productIndex)
         {
             lblProductName.Text = _productName;
             lblUnitPrice.Text = _unitPrice;
+
             productIndex = _productIndex;
+            oldName = _productName;
         }
 
         private void CommitChanges()
@@ -27,7 +31,7 @@ namespace EditProductProject.View_Layer
                 string productName = null;
                 string unitPrice = null;
 
-                #region IF ELSE // SET VALUES
+                #region CHECK FOR CHANGES 
                 if (txtNewProductName.Text == "")
                 {
                     productName = lblProductName.Text;
@@ -45,13 +49,13 @@ namespace EditProductProject.View_Layer
                 {
                     unitPrice = txtNewUnitPrice.Text;
                 }
-
                 #endregion
 
                 Presenter presenter = new Presenter();
-                presenter.GetSetInputValues(unitPrice, productName, productIndex);
+                presenter.GetSetInputValues(unitPrice, productName, productIndex, oldName);
 
-                if ((MessageBox.Show("Old name: " + lblProductName.Text + "\n" + " New name: " + productName + "\n" + "\n" + "Old price: " + lblUnitPrice.Text + "\n" + "New price: " + unitPrice , "Success!", MessageBoxButtons.OK) == DialogResult.OK))
+                string info = "Old name: " + lblProductName.Text + "\n" + " New name: " + productName + "\n\n" + "Old price: " + lblUnitPrice.Text + "\n" + "New price: " + unitPrice;
+                if ((MessageBox.Show(info, "Success!", MessageBoxButtons.OK) == DialogResult.OK))
                 {
                     this.Close();
                 }

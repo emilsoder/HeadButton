@@ -31,31 +31,9 @@ namespace AddProductProject.Model_Layer
 
             try
             {
-                // Skapa T-SQL kommando för att lägga till ny produkt
-                cmd.CommandText = "INSERT INTO dbo.Products ("
-                    + " ProductName,"
-                    + " SupplierID,"
-                    + " CategoryID,"
-                    + " QuantityPerUnit,"
-                    + " UnitPrice,"
-                    + " UnitsInStock,"
-                    + " UnitsOnOrder,"
-                    + " ReorderLevel,"
-                    + " Discontinued)"
-                    //Parametrar
-                    + " VALUES (" 
-                    + " @ProductName," 
-                    + " @SupplierID," 
-                    + " @CategoryID," 
-                    + " @QuantityPerUnit," 
-                    + " @UnitPrice,"
-                    + " @UnitsInStock," 
-                    + " @UnitsOnOrder," 
-                    + " @ReorderLevel," 
-                    + " @Discontinued" 
-                    + ")";
+                cmd.CommandText = "INSERT INTO dbo.Products (ProductName, SupplierID, CategoryID, QuantityPerUnit, UnitPrice, UnitsInStock, UnitsOnOrder, ReorderLevel, Discontinued)"
+                    + " VALUES (@ProductName, @SupplierID,  @CategoryID,  @QuantityPerUnit, @UnitPrice, @UnitsInStock, @UnitsOnOrder, @ReorderLevel, @Discontinued)";
 
-                // Ändra "@parameter" till respektive parameter 
                 cmd.Parameters.AddWithValue("@ProductName", productName);
                 cmd.Parameters.AddWithValue("@SupplierID", SupplierID());
                 cmd.Parameters.AddWithValue("@CategoryID", CategoryID());
@@ -72,28 +50,27 @@ namespace AddProductProject.Model_Layer
             }
             catch (SqlException ex)
             {
-                Debug.WriteLine("********  " + ex.Message + "  ********");
                 MessageBox.Show(ex.Message);
             }
             conn.Close();
             MessageBox.Show("Product added!", "Successful!");
-
         }
 
+        /// <summary>
+        /// Gets the collection of Suppliers. 
+        /// 
+        /// Fills ComboBox with values
+        /// </summary>
         public static void GetSuppliers()
         {
             SqlConnection conn = new SqlConnection(connString);
-
             string sqlQuery = "SELECT [CompanyName] FROM [dbo].[Suppliers] ORDER BY SupplierID";
-
             SqlCommand cmd = new SqlCommand(sqlQuery, conn);
             conn.Open();
-
             SqlDataReader rd = cmd.ExecuteReader();
 
             while (rd.Read())
             {
-                //Presenter.listCategories.Add(rd.GetValue(0).ToString());
                 Presenter.SupplierList.Add(rd.GetValue(0).ToString());
             }
 
@@ -101,6 +78,9 @@ namespace AddProductProject.Model_Layer
             conn.Close();
         }
 
+        /// <summary>
+        /// Get the value of SupplierID
+        /// </summary>
         public string SupplierID()
         {
             string _supplierID = null;
@@ -108,7 +88,6 @@ namespace AddProductProject.Model_Layer
             SqlConnection conn = new SqlConnection(connString);
             conn.Open();
             SqlCommand cmd = conn.CreateCommand();
-
             cmd.CommandText = "SELECT [SupplierID] FROM [dbo].[Suppliers] WHERE CompanyName = @CompanyName";
             cmd.Parameters.AddWithValue("@CompanyName", supplier);
             SqlDataReader reader = cmd.ExecuteReader();
@@ -120,18 +99,18 @@ namespace AddProductProject.Model_Layer
 
             reader.Close();
             conn.Close();
-
             return _supplierID;
         }
 
+        /// <summary>
+        /// Get the value of CategoryID
+        /// </summary>
         public string CategoryID()
         {
             string _categoryID = null;
-
             SqlConnection conn = new SqlConnection(connString);
             conn.Open();
             SqlCommand cmd = conn.CreateCommand();
-
             cmd.CommandText = "SELECT [CategoryID] FROM [dbo].[Categories] WHERE CategoryName = @CategoryName";
             cmd.Parameters.AddWithValue("@CategoryName", category);
             SqlDataReader reader = cmd.ExecuteReader();
@@ -143,7 +122,6 @@ namespace AddProductProject.Model_Layer
 
             reader.Close();
             conn.Close();
-
             return _categoryID;
         }
     }

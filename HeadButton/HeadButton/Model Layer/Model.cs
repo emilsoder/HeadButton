@@ -32,94 +32,69 @@ namespace HeadButton.Model_Layer
             conn.Close();
         }
 
-        public static void GetProductsByIndex()
+        public static void GetProductsByIndex(int _categoryIndex)
         {
-            var selectedItem = Presenter.categoryIndex + 1;
+           
 
             SqlConnection conn = new SqlConnection(connString);
             conn.Open();
 
             SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT [ProductName], [ProductID] FROM [dbo].[Products] WHERE CategoryID = @CategoryID";
-            cmd.Parameters.AddWithValue("@CategoryID", selectedItem.ToString());
+
+
+            cmd.CommandText = "SELECT [ProductName] FROM [dbo].[Products] WHERE CategoryID = @CategoryID";
+
+            cmd.Parameters.AddWithValue("@CategoryID", _categoryIndex.ToString());
 
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
             {
-                Presenter.listProducts.Add(reader.GetValue(1).ToString() + ". " + reader.GetValue(0).ToString());
+                Presenter.listProducts.Add(reader.GetValue(0).ToString());
             }
-
             reader.Close();
             conn.Close();
         }
 
         public static void SetTextBoxes()
         {
-            SetUnitPrice();
-            SetProductName();
-        }
-
-        private static void SetUnitPrice()
-        {
-            int selectedItem = Presenter.productIndex;
-
-            SqlConnection conn = new SqlConnection(connString);
-            conn.Open();
-
-            SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT [UnitPrice] FROM [dbo].[Products] WHERE ProductID = @ProductID";
-            cmd.Parameters.AddWithValue("@ProductID", selectedItem.ToString());
-
-            SqlDataReader reader = cmd.ExecuteReader();
-            reader.Read();
-
-            Presenter.unitPrice = (reader.GetValue(0).ToString());
-
-            reader.Close();
-            conn.Close();
-        }
-
-        private static void SetProductName()
-        {
-            int selectedItem = Presenter.productIndex;
-
-            SqlConnection conn = new SqlConnection(connString);
-            conn.Open();
-
-            SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT [ProductName] FROM [dbo].[Products] WHERE ProductID = @ProductID";
-
-            cmd.Parameters.AddWithValue("@ProductID", selectedItem.ToString());
-
-            SqlDataReader reader = cmd.ExecuteReader();
-            reader.Read();
-
-            Presenter.productName = (reader.GetValue(0).ToString());
-
-            reader.Close();
-            conn.Close();
+            GetProduct(Presenter.selectedProductName);
         }
 
         public static void DeleteRecord(string _productIndex)
         {
 
         }
+
+        public static void GetProduct(string _productName)
+        {
+            string _id = null;
+            #region PROCEDURE 1: EXTRACT ID
+            SqlConnection conn1 = new SqlConnection(connString);
+            conn1.Open();
+
+            SqlCommand cmd1 = conn1.CreateCommand();
+            cmd1.CommandText = "SELECT [ProductID] FROM [dbo].[Products] WHERE ProductName = @ProductName";
+            cmd1.Parameters.AddWithValue("@ProductName", _productName);
+
+            SqlDataReader reader = cmd1.ExecuteReader();
+            reader.Read();
+            _id = (reader.GetValue(0).ToString());
+            reader.Close();
+
+            SqlCommand cmd2 = conn1.CreateCommand();
+            cmd2.CommandText = "SELECT [ProductName], [UnitPrice] FROM [dbo].[Products] WHERE ProductID = @ProductID";
+            cmd2.Parameters.AddWithValue("@ProductID", _id);
+
+            SqlDataReader reader2 = cmd2.ExecuteReader();
+            reader2.Read();
+            Presenter.productName = (reader2.GetValue(0).ToString());
+            Presenter.unitPrice = (reader2.GetValue(1).ToString());
+            reader2.Close();
+
+            conn1.Close();
+            #endregion
+        }
     }
 }
-        //public static void Update()
-        //{
-        //    SqlConnection conn = new SqlConnection(connString);
-        //    string sqlQuery = "UPDATE [dbo].[Products] SET [ProductName]=@ProductName, [UnitPrice]=@UnitPrice WHERE [ProductID]=@ProductID";
-
-        //    SqlCommand cmd = new SqlCommand(sqlQuery, conn);
-
-        //    cmd.Parameters.AddWithValue("@ProductName", Presenter.newProductName);
-        //    cmd.Parameters.AddWithValue("@UnitPrice", Presenter.newUnitPrice);
-        //    cmd.Parameters.AddWithValue("@ProductID", Presenter.productIndex);
-
-        //    conn.Open();
-        //    cmd.ExecuteNonQuery();
-
-        //    conn.Close();
-        //}
+    
